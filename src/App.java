@@ -12,7 +12,7 @@ import javax.swing.GroupLayout.Group;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        Path path = Paths.get("input.xml");
+        Path path = Paths.get("input4.xml");
         //byte[] bytes = Files.readAllBytes(path);
 
         StringBuilder file = new StringBuilder();
@@ -34,18 +34,34 @@ public class App {
     public static StringBuilder MontaObjeto(List<Objeto> objetos){
         StringBuilder json = new StringBuilder();
         
-        for (Objeto objeto : objetos) {
-            json.append("\"" + objeto.nome + "\":");
-            if(objeto.valor != null){
-                json.append(" \"" + objeto.valor + "\"");
+        for(int i = 0, size = objetos.size(); i < size; i++){
+            if((i + 1 < size && objetos.get(i).nome.equals(objetos.get(i + 1).nome)) || (i != 0 && i + 1 == size && objetos.get(i).nome.equals(objetos.get(i - 1).nome))){
+                if(i == 0 || (i - 1 >= 0 && !objetos.get(i - 1).nome.equals(objetos.get(i).nome))){
+                    json.append("\"" + objetos.get(i).nome + "\": ["); //se o próximo objeto do primeiro item da lista tiver o mesmo nome que esse e o objeto anterior for diferente é criado um array
+                }
+                //caso o item não seja o primeiro do array o objeto não tem o cabeçalho escrito
+            }
+            else{
+                json.append("\"" + objetos.get(i).nome + "\":"); //caso o objeto não se repita não é criado o array
+            }
+            
+            if(objetos.get(i).valor != null){
+                json.append(" \"" + objetos.get(i).valor + "\"");
             }
             else{
                 json.append("{\n");
-                json.append(MontaObjeto(objeto.filho));
+                json.append(MontaObjeto(objetos.get(i).filho));
                 json.append("\n}");
+                //verifica se o nome do objeto anterior é igual a ele e se ou o posterior é diferente ou ele é o último objeto
+                if((i - 1 >= 0 && objetos.get(i - 1).nome.equals(objetos.get(i).nome)) && (i + 1 == size || (i + 1 < size && !objetos.get(i).nome.equals(objetos.get(i + 1).nome)))){
+                    json.append("]");
+                }
             }
-            if(objetos.size() > 1 && objetos.get(objetos.size() - 1) != objeto)
+            if(objetos.size() > 1 && objetos.get(objetos.size() - 1) != objetos.get(i))
                     json.append(",\n");
+        }
+        for (Objeto objeto : objetos) {
+            
         }
         return json;
     }
