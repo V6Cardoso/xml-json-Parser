@@ -6,8 +6,8 @@ Desaifio realizado utilizando a metodologia Pair programming
 
 Desenvolvedores:
 
-https://github.com/Jvitor382
+<a href="https://github.com/Jvitor382">João</a>
 
-https://github.com/LeoNaria
+<a href="https://github.com/LeoNaria">Leonardo</a>
 
-<a href="./..">Eu mesmo</a>
+<a href="https://github.com/V6Cardoso">Victor</a>
