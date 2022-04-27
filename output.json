@@ -1,6 +1,7 @@
 {
-"CATALOG":{
-"CD": [{
+"CATALOG": {
+"CD": [
+{
 "TITLE": "Empire Burlesque",
 "ARTIST": "Bob Dylan",
 "COUNTRY": "USA",
@@ -207,6 +208,7 @@
 "COMPANY": "EMI",
 "PRICE": "8.20",
 "YEAR": "1987"
-}]
+}
+]
 }
 }

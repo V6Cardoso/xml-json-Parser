@@ -34,16 +34,16 @@ public class App {
         for(int i = 0, size = objetos.size(); i < size; i++){
             if((i + 1 < size && objetos.get(i).nome.equals(objetos.get(i + 1).nome)) || (i != 0 && i + 1 == size && objetos.get(i).nome.equals(objetos.get(i - 1).nome))){
                 if(i == 0 || (i - 1 >= 0 && !objetos.get(i - 1).nome.equals(objetos.get(i).nome))){
-                    json.append("\"" + objetos.get(i).nome + "\": ["); //se o próximo objeto do primeiro item da lista tiver o mesmo nome que esse e o objeto anterior for diferente é criado um array
+                    json.append("\"" + objetos.get(i).nome + "\": [\n"); //se o próximo objeto do primeiro item da lista tiver o mesmo nome que esse e o objeto anterior for diferente é criado um array
                 }
                 //caso o item não seja o primeiro do array o objeto não tem o cabeçalho escrito
             }
             else{
-                json.append("\"" + objetos.get(i).nome + "\":"); //caso o objeto não se repita não é criado o array
+                json.append("\"" + objetos.get(i).nome + "\": "); //caso o objeto não se repita não é criado o array
             }
             
             if(objetos.get(i).valor != null){
-                json.append(" \"" + objetos.get(i).valor + "\"");
+                json.append("\"" + objetos.get(i).valor + "\"");
             }
             else{
                 json.append("{\n");
@@ -51,7 +51,7 @@ public class App {
                 json.append("\n}");
                 //verifica se o nome do objeto anterior é igual a ele e se ou o posterior é diferente ou ele é o último objeto
                 if((i - 1 >= 0 && objetos.get(i - 1).nome.equals(objetos.get(i).nome)) && (i + 1 == size || (i + 1 < size && !objetos.get(i).nome.equals(objetos.get(i + 1).nome)))){
-                    json.append("]");
+                    json.append("\n]");
                 }
             }
             if(objetos.size() > 1 && objetos.get(objetos.size() - 1) != objetos.get(i))
