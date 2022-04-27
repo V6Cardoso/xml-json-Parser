@@ -12,7 +12,7 @@ import javax.swing.GroupLayout.Group;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        Path path = Paths.get("input4.xml");
+        Path path = Paths.get("input.xml");
         //byte[] bytes = Files.readAllBytes(path);
 
         StringBuilder file = new StringBuilder();
@@ -47,11 +47,6 @@ public class App {
             if(objetos.size() > 1 && objetos.get(objetos.size() - 1) != objeto)
                     json.append(",\n");
         }
-        if(objetos.size() > 1){
-            json.insert(0, "{\n");
-            json.append("\n}");
-        }
-        
         return json;
     }
 
