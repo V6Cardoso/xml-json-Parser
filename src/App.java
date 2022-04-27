@@ -9,8 +9,7 @@ import java.util.regex.Pattern;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        Path path = Paths.get("input4.xml");
-        //byte[] bytes = Files.readAllBytes(path);
+        Path path = Paths.get("input.xml");
 
         StringBuilder file = new StringBuilder();
         file.append(Files.readAllLines(path));
